@@ -1,7 +1,6 @@
 const path = require('path');
 
 module.exports = {
-    assetPrefix: '/igor',
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         config.resolve.extensions.push('.tsx');
 
