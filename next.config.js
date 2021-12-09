@@ -1,11 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    env: {
-        NEXT_PUBLIC_BASE_PATH: "/igor",
-    },
-    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
-    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
+    assetPrefix: '.',
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         config.resolve.extensions.push('.tsx');
 
