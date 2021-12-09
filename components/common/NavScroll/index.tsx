@@ -69,7 +69,7 @@ const NavScroll: FC<IProps> = ({ links }) => {
 
     return (
         <div className={s.navScroll}>
-            <ReactSVG className={s.svgBg} src="/images/common/nav-bar-bg.svg" />
+            <ReactSVG className={s.svgBg} src="/static/images/common/nav-bar-bg.svg" />
             {
                 links.map((link, index) => (
                     <Link

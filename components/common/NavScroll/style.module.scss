@@ -3,7 +3,6 @@
 	z-index: 1000;
 	top: 45vh;
 	right: 30px;
-	background-image: url('/images/common/nav-bar-bg.png');
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: 5px 5px;
@@ -20,9 +19,10 @@
 	.svgBg {
 		position: absolute;
 		z-index: 1;
+		top: 15px;
 
 		svg {
-			height: 140px;
+			height: 150px;
 			width: 60px;
 			g {
 				fill: var(--color-accent);
