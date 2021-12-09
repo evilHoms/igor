@@ -1,11 +1,7 @@
 import { FC } from 'react';
 
 const Arduino: FC = () => {
-	return (
-		<>
-			Arduino
-		</>
-	);
-}
+    return <>Arduino</>;
+};
 
 export default Arduino;
