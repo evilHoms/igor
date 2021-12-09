@@ -2,9 +2,10 @@ const path = require('path');
 
 module.exports = {
     env: {
-        PUBLIC_URL: "https://evilHoms.github.io/igor",
-        assetPrefix: './'
+        NEXT_PUBLIC_BASE_PATH: "/igor",
     },
+    basePath: process.env.NEXT_PUBLIC_BASE_PATH,
+    assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH,
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         config.resolve.extensions.push('.tsx');
 
