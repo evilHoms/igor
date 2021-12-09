@@ -12,7 +12,7 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                   emitFile: isServer,
-                  publicPath: `/_next/static/`,
+                  publicPath: `/_next/static/images`,
                   outputPath: `${isServer ? '../' : ''}static/`,
                   name: '[path][name].[ext]'
                 }
@@ -27,7 +27,7 @@ module.exports = {
               loader: 'file-loader',
               options: {
                 emitFile: isServer,
-                publicPath: `/_next/static/`,
+                publicPath: `/_next/static/videos`,
                 outputPath: `${isServer ? '../' : ''}static/`,
                 name: '[name].[ext]'
               }  
