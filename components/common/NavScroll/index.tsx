@@ -6,7 +6,7 @@ import IconNames from '../Icon/constants/icon-names';
 import s from './style.module.scss';
 
 interface IProps {
-    links: string[]
+    links: string[];
 }
 
 const NavScroll: FC<IProps> = ({ links }) => {
@@ -16,13 +16,13 @@ const NavScroll: FC<IProps> = ({ links }) => {
     let isScrolling = false;
 
     const handleSetActive = (to: string) => {
-        const currentIndex = links.findIndex(link => link === to);
+        const currentIndex = links.findIndex((link) => link === to);
 
         if (currentIndex > 0) {
             prevLink = links[currentIndex - 1];
         }
 
-        if (currentIndex < (links.length - 1)) {
+        if (currentIndex < links.length - 1) {
             nextLink = links[currentIndex + 1];
         }
     };
@@ -43,11 +43,11 @@ const NavScroll: FC<IProps> = ({ links }) => {
 
         if (Math.abs(wheelScrolled) >= scrollThreshold) {
             isScrolling = true;
-            setTimeout(() => isScrolling = false, 900);
+            setTimeout(() => (isScrolling = false), 900);
 
             const scrollLink = wheelScrolled > 0 ? nextLink : prevLink;
 
-            scroller.scrollTo(scrollLink,{
+            scroller.scrollTo(scrollLink, {
                 duration: 500,
                 smooth: true,
             });
@@ -64,28 +64,28 @@ const NavScroll: FC<IProps> = ({ links }) => {
         return () => {
             document.body.style.overflow = null;
             window.removeEventListener('wheel', handleWheel);
-        }
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <div className={s.navScroll}>
             <ReactSVG className={s.svgBg} src="/static/images/common/nav-bar-bg.svg" />
-            {
-                links.map((link, index) => (
-                    <Link
-                        style={{ marginLeft: index * 3 + 'px' }}
-                        className={s.link}
-                        activeClass={s.activeLink}
-                        to={link}
-                        spy={true}
-                        smooth={true}
-                        duration={500}
-                        onSetActive={handleSetActive}
-                        key={link}>
-                        <Icon name={IconNames.Dot} />
-                    </Link>
-                ))
-            }
+            {links.map((link, index) => (
+                <Link
+                    style={{ marginLeft: index * 3 + 'px' }}
+                    className={s.link}
+                    activeClass={s.activeLink}
+                    to={link}
+                    spy={true}
+                    smooth={true}
+                    duration={500}
+                    onSetActive={handleSetActive}
+                    key={link}
+                >
+                    <Icon name={IconNames.Dot} />
+                </Link>
+            ))}
         </div>
     );
 };

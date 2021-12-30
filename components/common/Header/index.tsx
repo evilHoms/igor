@@ -3,20 +3,24 @@ import classNames from 'classnames';
 import Link, { ILink } from '../Link';
 import s from './style.module.scss';
 
- const Header: FC = () => {
+const Header: FC = () => {
     const [isOnTop, setIsOnTop] = useState<boolean>(true);
     const [currentLink, setCurrentLink] = useState<string>('');
 
-    const links: ILink[] = [{
-        name: 'Homepage',
-        to: '/',
-    }, {
-        name: 'My DIY Doc',
-        to: '/my-diy-doc',
-    }, {
-        name: 'test3',
-        to: '/test3',
-    }];
+    const links: ILink[] = [
+        {
+            name: 'Homepage',
+            to: '/',
+        },
+        {
+            name: 'My DIY Doc',
+            to: '/my-diy-doc',
+        },
+        {
+            name: 'test3',
+            to: '/test3',
+        },
+    ];
 
     const handleDocumentScroll = () => {
         if (window.scrollY > 0) {
@@ -25,40 +29,41 @@ import s from './style.module.scss';
             setIsOnTop(true);
         }
     };
-    
+
     const handleMount = () => {
         handleDocumentScroll();
         document.addEventListener('scroll', handleDocumentScroll);
 
-        const link = links.reverse().find(link => new RegExp(link.to).test(window.location.href));
+        const link = links.reverse().find((link) => new RegExp(link.to).test(window.location.href));
         link && setCurrentLink(link.name);
-    
+
         return () => {
             document.removeEventListener('scroll', handleDocumentScroll);
-        }
+        };
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => handleMount(), []);
 
     return (
-        <header className={classNames({
-            [s.commonHeader]: true,
-            [s.withBg]: !isOnTop,
-        })}>
+        <header
+            className={classNames({
+                [s.commonHeader]: true,
+                [s.withBg]: !isOnTop,
+            })}
+        >
             <div className={s.expandedHeader}>
                 <div className={s.left}>
-                    <div className={s.logo}>
-                        Some cool logo
-                    </div>
+                    <div className={s.logo}>Some cool logo</div>
                 </div>
 
                 <div className={s.right}>
                     <ul className={s.links}>
-                        { links.map((link, index) => (
+                        {links.map((link, index) => (
                             <li key={index} className={link.name === currentLink ? s.hiddenLink : null}>
-                                <Link link={link} onClick={ () => setCurrentLink(link.name) } />
-                            </li>    
-                        )) }
+                                <Link link={link} onClick={() => setCurrentLink(link.name)} />
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
@@ -71,13 +76,11 @@ import s from './style.module.scss';
                 </div>
 
                 <div className={s.right}>
-                    <div className={s.currentLink}>
-                        { currentLink }
-                    </div>
+                    <div className={s.currentLink}>{currentLink}</div>
                 </div>
             </div>
         </header>
     );
-}
+};
 
 export default Header;
