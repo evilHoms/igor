@@ -3,7 +3,7 @@ import s from './style.module.scss';
 import Link from 'common/Link';
 
 const MyDiyPage: FC = () => {
-    const links = [
+    const moduleLinks = [
         {
             name: 'Arduino',
             to: '/my-diy-doc/arduino',
@@ -14,11 +14,28 @@ const MyDiyPage: FC = () => {
         },
     ];
 
+    const projectLinks = [{
+        name: 'rf_controller',
+        to: '/my-diy-doc/rf-controller',
+    }, {
+        name: 'tank_rover',
+        to: '/my-diy-doc/tank-rover',
+    }];
+
     return (
         <main className={s.main}>
             <h1>My DIY doc</h1>
+            <h2>Modules</h2>
             <ul>
-                {links.map((link) => (
+                {moduleLinks.map((link) => (
+                    <li key={link.name}>
+                        <Link link={link} />
+                    </li>
+                ))}
+            </ul>
+            <h2>Projects</h2>
+            <ul>
+                {projectLinks.map((link) => (
                     <li key={link.name}>
                         <Link link={link} />
                     </li>
